@@ -4,197 +4,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CRUD Module - Admin Dashboard</title>
+    <title>Modul - Admin Dashboard</title>
+
+    <!-- Styles -->
     <link rel="stylesheet" href="/asset/css/main/app.css">
     <link rel="stylesheet" href="/asset/css/main/app-dark.css">
-    <link rel="shortcut icon" href="/asset/images/logo/favicon.svg" type="image/x-icon">
-    <link rel="shortcut icon" href="/asset/images/logo/favicon.png" type="image/png">
-    <link rel="stylesheet" href="/asset/css/shared/iconly.css">
     <link rel="stylesheet" href="/asset/extensions/simple-datatables/style.css">
     <link rel="stylesheet" href="/asset/css/pages/simple-datatables.css">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+
+    <link rel="stylesheet" href="/assets/vendors/iconly/bold.css">
+
+    <link rel="stylesheet" href="/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon">
 </head>
 
-<body>
-    <div id="app">
+<body class="d-flex flex-column min-vh-100">
+    <div id="app" class="flex-grow-1 d-flex">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
                 @include('component.sidebar_admin')
             </div>
         </div>
-        <div id="main">
+
+        <div id="main" class="flex-grow-1 d-flex flex-column">
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
-            <div class="page-heading">
-                <div class="page-title">
-                    <div class="row">
-                        <div class="col-12 col-md-6 order-md-1 order-last">
-                            <h3>Module Management</h3>
-                        </div>
-                        <div class="col-12 col-md-6 order-md-2 order-first">
-                            <nav aria-label="breadcrumb" class="breadcrumb-header float-start float-lg-end">
-                                <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
-                                    <li class="breadcrumb-item active" aria-current="page">Module</li>
-                                </ol>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-                <section class="section">
-                    <div class="card">
-                        <div class="card-header d-flex justify-content-between align-items-center">
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalManageModule">Add New</button>
-                            <input type="text" class="form-control w-50" placeholder="Search Module...">
-                        </div>
-                        <div class="card-body">
-                            <table class="table table-striped" id="tableModule">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Action</th>
-                                        <th>Module Name</th>
-                                        <th>Module Description</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Data module dari controller -->
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </section>
-            </div>
-            <footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="float-start">
-                        <p>2025 &copy; SMKN 1 Kawali</p>
-                    </div>
-                    <div class="float-end">
-                        <p>Dibuat dengan <span class="text-danger"><i class="bi bi-heart"></i></span> oleh Admin</p>
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </div>
 
-    <!-- Modal Manage Module -->
-    <div class="modal fade" id="modalManageModule" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Manage Module</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <img src="/path-to-image.jpg" class="img-fluid mb-3" alt="Current Module Image">
-                    <table class="table table-bordered mb-3">
-                        <thead>
-                            <tr>
-                                <th>Module Name</th>
-                                <th>Module Description</th>
-                                <th>Index Order</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="text" class="form-control"></td>
-                                <td><input type="text" class="form-control"></td>
-                                <td><input type="number" class="form-control"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button class="btn btn-success">Save Module</button>
-                </div>
-            </div>
-        </div>
-    </div>
+            <main class="flex-grow-1 overflow-auto px-3">
+                <div class="page-heading">
+                    <div class="page-title">
+                        <h3>Modul</h3>
+                    </div>
 
-    <!-- Modal Manage Module Object -->
-    <div class="modal fade" id="modalManageModuleObject" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Manage Module Object</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <section class="section">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <span>Modul</span>
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambahModule">Tambah Modul</button>
+                            </div>
+                            <div class="card-body">
+                                <table class="table table-striped" id="table1">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Modul</th>
+                                            <th>Deskripsi Modul</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach($modules as $index => $module)
+                                        <tr>
+                                            <td>{{ $index + 1 }}</td>
+                                            <td>{{ $module->nama_module }}</td>
+                                            <td>{{ $module->deskripsi_module }}</td>
+                                            <td>
+                                                <a href="{{ route('modules.edit', $module->id) }}" class="btn btn-sm btn-info">✏️</a>
+                                                <form action="{{ route('modules.destroy', $module->id) }}" method="POST" style="display:inline;">
+                                                    @csrf @method('DELETE')
+                                                    <button class="btn btn-sm btn-danger">🗑️</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+
+                                <!-- Modal Tambah Modul -->
+                                <div class="modal fade" id="modalTambahModule" tabindex="-1" aria-labelledby="modalTambahModuleLabel" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                        <form action="{{ route('modules.store') }}" method="POST" enctype="multipart/form-data" class="modal-content">
+                                            @csrf
+                                            <div class="modal-header">
+                                                <h5 class="modal-title" id="modalTambahModuleLabel">Tambah Modul</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="form-group mb-3">
+                                                    <label>Icon Modul (Foto)</label>
+                                                    <input type="file" name="icon" class="form-control" required>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label>Nama Modul</label>
+                                                    <input type="text" name="nama_module" class="form-control" required>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label>Deskripsi Modul</label>
+                                                    <textarea name="deskripsi_module" class="form-control" rows="3"></textarea>
+                                                </div>
+                                                <div class="form-group mb-3">
+                                                    <label>Index Modul</label>
+                                                    <input type="number" name="index_module" class="form-control" required>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-success">Simpan</button>
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
                 </div>
-                <div class="modal-body">
-                    <div class="row g-3 mb-3">
-                        <div class="col-md-4">
-                            <label>Module Object Name</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            <label>Module Object Description</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            <label>Index Order</label>
-                            <input type="number" class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            <label>Parent Module</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            <label>Icon CSS</label>
-                            <input type="text" class="form-control">
-                        </div>
-                        <div class="col-md-4">
-                            <label>Status</label>
-                            <select class="form-control">
-                                <option value="1">Active</option>
-                                <option value="0">Inactive</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label>Object Detail Header</label>
-                        <input type="text" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label>Object Detail Description</label>
-                        <textarea class="form-control"></textarea>
-                    </div>
-                    <div class="d-flex justify-content-end mb-3">
-                        <button class="btn btn-success me-2">Save</button>
-                        <button class="btn btn-warning">Clear</button>
-                    </div>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Action</th>
-                                <th>Object Name</th>
-                                <th>Object Description</th>
-                                <th>Index</th>
-                                <th>Parent Module</th>
-                                <th>Is Active</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Data object module -->
-                        </tbody>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
+            </main>
         </div>
     </div>
 
     <script src="/asset/js/bootstrap.js"></script>
     <script src="/asset/js/app.js"></script>
     <script src="/asset/extensions/simple-datatables/umd/simple-datatables.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script>
-        let table = document.querySelector('#tableModule');
-        let dataTable = new simpleDatatables.DataTable(table);
+        let table1 = document.querySelector('#table1');
+        let dataTable = new simpleDatatables.DataTable(table1);
     </script>
+    <script src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/assets/vendors/apexcharts/apexcharts.js"></script>
+    <script src="/assets/js/pages/dashboard.js"></script>
+
+    <script src="/assets/js/main.js"></script>
+
+    
+
+    @include('component.footer_admin')
 </body>
 
 </html>

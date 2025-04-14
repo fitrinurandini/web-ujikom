@@ -1,9 +1,10 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SesiController;
 use App\Http\Controllers\UserController;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ModuleController;
 
 // Tampilkan halaman welcome saat membuka root URL
 Route::get('/', function () {
@@ -23,23 +24,20 @@ Route::get('/home', function () {
 
 // Routing untuk pengguna yang sudah login
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin', [AdminController::class, 'index']);
-    Route::get('/admin/admin', [AdminController::class, 'admin'])->middleware('userAkses:admin');
-    Route::get('/admin/user', [AdminController::class, 'user'])->middleware('userAkses:user');
-    Route::post('/logout', [SesiController::class, 'logout'])->name('logout'); // Menggunakan post untuk logout
+    Route::get('/admin', [AdminController::class, 'admin'])->middleware('userAkses:admin')->name('index');
+    Route::get('/admin/datauser', [UserController::class, 'index'])->middleware('userAkses:admin')->name('datauser');
+    Route::post('/admin/datauser', [UserController::class, 'store'])->name('users.store');
+    Route::put('/admin/datauser/{user}', [UserController::class, 'update'])->name('users.update');
+    Route::delete('/admin/user/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+
+    Route::get('modules', [ModuleController::class, 'index'])->name('modules.index');
+    Route::post('modules', [ModuleController::class, 'store'])->name('modules.store');
+    Route::get('modules/{module}/edit', [ModuleController::class, 'edit'])->name('modules.edit');
+    Route::put('modules/{module}', [ModuleController::class, 'update'])->name('modules.update');
+    Route::delete('modules/{module}', [ModuleController::class, 'destroy'])->name('modules.destroy');
+
 });
 
-// Rute admin dengan userAkses:admin untuk memastikan hanya admin yang bisa mengaksesnya
-Route::prefix('admin')->middleware(['auth', 'userAkses:admin'])->name('admin.')->group(function () {
-    // Rute resource untuk users dengan nama prefix admin
-    Route::resource('users', UserController::class)->names([
-        'index' => 'users.index',
-        'create' => 'users.create',
-        'store' => 'users.store',
-        'show' => 'users.show',
-        'edit' => 'users.edit',
-        'update' => 'users.update',
-        'destroy' => 'users.destroy',
-    ]);
-});
+
+Route::post('/logout', [SesiController::class, 'logout'])->name('logout'); // Menggunakan post untuk logout
 

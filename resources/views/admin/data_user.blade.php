@@ -2,48 +2,55 @@
 <html lang="en">
 
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produk - Admin Dashboard</title>
+    <title>Data Karyawan - Admin Dashboard</title>
 
+    <!-- Styles (Tidak dihapus) -->
     <link rel="stylesheet" href="/asset/css/main/app.css">
     <link rel="stylesheet" href="/asset/css/main/app-dark.css">
     <link rel="shortcut icon" href="/asset/images/logo/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon" href="/asset/images/logo/favicon.png" type="image/png">
-    <link rel="stylesheet" href="/asset/css/main/app.css">
-    <link rel="stylesheet" href="/asset/css/main/app-dark.css">
-    
     <link rel="stylesheet" href="/asset/css/shared/iconly.css">
-
     <link rel="stylesheet" href="/asset/extensions/simple-datatables/style.css">
     <link rel="stylesheet" href="/asset/css/pages/simple-datatables.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+    <link rel="stylesheet" href="/assets/vendors/iconly/bold.css">
+    <link rel="stylesheet" href="/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
+    <link rel="stylesheet" href="/assets/vendors/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
-<body>
-    <div id="app">
+<body class="d-flex flex-column min-vh-100">
+    <div id="app" class="flex-grow-1 d-flex">
         <div id="sidebar" class="active">
             <div class="sidebar-wrapper active">
                 @include('component.sidebar_admin')
             </div>
         </div>
 
-        <div id="main">
+        <div id="main" class="flex-grow-1 d-flex flex-column">
             <header class="mb-3">
                 <a href="#" class="burger-btn d-block d-xl-none">
                     <i class="bi bi-justify fs-3"></i>
                 </a>
             </header>
 
+            <main class="flex-grow-1 overflow-auto px-3"> 
             <div class="page-heading">
                 <div class="page-title">
-                    <h3>Data User</h3>
+                    <h3>Data Karyawan</h3>
                 </div>
 
                 <section class="section">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <span>Data User</span>
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambahUser">Tambah User</button>
+                            <span>Data Karyawan</span>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambahUser">Tambah Karyawan</button>
                         </div>
                         <div class="card-body">
                             <table class="table table-striped" id="table1">
@@ -56,71 +63,31 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($users as $index => $user)
+                                    @foreach ($users as $index => $user)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->email }}</td>
                                         <td>
-                                            <!-- Delete User -->
-                                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline" onsubmit="return confirmDelete()">
+                                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditUser{{ $user->id }}">✏️</button>
+                                            <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline delete-form">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger btn-sm">Hapus</button>
-                                            </form>
-
-                                            <!-- Edit Modal Trigger -->
-                                            <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#modalEditUser{{ $user->id }}">Edit</button>
+                                                <button type="button" class="btn btn-danger btn-sm btn-delete" data-id="{{ $user->id }}">🗑️</button>
+                                            </form>                                            
                                         </td>
                                     </tr>
-
-                                    <!-- Modal Edit User -->
-                                    <div class="modal fade" id="modalEditUser{{ $user->id }}" tabindex="-1" aria-labelledby="modalEditUserLabel{{ $user->id }}" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <form action="{{ route('users.update', $user->id) }}" method="POST" class="modal-content">
-                                                @csrf
-                                                @method('PUT')
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title">Edit User</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <div class="form-group mb-3">
-                                                        <label for="name">Nama</label>
-                                                        <input type="text" name="name" class="form-control" value="{{ $user->name }}" required>
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                        <label for="email">Email</label>
-                                                        <input type="email" name="email" class="form-control" value="{{ $user->email }}" required>
-                                                    </div>
-                                                    <div class="form-group mb-3">
-                                                        <label for="password">Password (kosongkan jika tidak diubah)</label>
-                                                        <input type="password" name="password" class="form-control">
-                                                    </div>
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="submit" class="btn btn-primary">Simpan</button>
-                                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div>
-                                    @empty
-                                    <tr>
-                                        <td colspan="4" class="text-center">Tidak ada data user.</td>
-                                    </tr>
-                                    @endforelse
+                                    @endforeach
                                 </tbody>
                             </table>
 
-                            <!-- Modal Tambah User -->
+                            {{-- Modal Tambah User --}}
                             <div class="modal fade" id="modalTambahUser" tabindex="-1" aria-labelledby="modalTambahUserLabel" aria-hidden="true">
                                 <div class="modal-dialog">
-                                <form action="{{ route('admin.users.store') }}" method="POST" class="modal-content">
-
+                                    <form action="{{ route('users.store') }}" method="POST" class="modal-content">
                                         @csrf
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Tambah User</h5>
+                                            <h5 class="modal-title">Tambah Karyawan</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                                         </div>
                                         <div class="modal-body">
@@ -132,10 +99,6 @@
                                                 <label>Email</label>
                                                 <input type="email" name="email" class="form-control" required>
                                             </div>
-                                            <div class="form-group mb-3">
-                                                <label>Password</label>
-                                                <input type="password" name="password" class="form-control" required>
-                                            </div>
                                         </div>
                                         <div class="modal-footer">
                                             <button type="submit" class="btn btn-success">Simpan</button>
@@ -144,37 +107,89 @@
                                     </form>
                                 </div>
                             </div>
+
+                            {{-- Modal Edit User --}}
+                            @foreach ($users as $user)
+                            <div class="modal fade" id="modalEditUser{{ $user->id }}" tabindex="-1" aria-labelledby="modalEditUserLabel{{ $user->id }}" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <form action="{{ route('users.update', $user->id) }}" method="POST" class="modal-content">
+                                        @csrf
+                                        @method('PUT')
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Edit Karyawan</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group mb-3">
+                                                <label>Nama</label>
+                                                <input type="text" name="name" class="form-control" value="{{ $user->name }}" required>
+                                            </div>
+                                            <div class="form-group mb-3">
+                                                <label>Email</label>
+                                                <input type="email" name="email" class="form-control" value="{{ $user->email }}" required>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-primary">Simpan</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </section>
             </div>
 
-            <footer>
-                <div class="footer clearfix mb-0 text-muted">
-                    <div class="float-start">
-                        <p>2025 &copy; SMKN 1 Kawali</p>
-                    </div>
-                    <div class="float-end">
-                        <p>Dibuat dengan <span class="text-danger"><i class="bi bi-heart"></i></span> oleh Admin</p>
-                    </div>
-                </div>
-            </footer>
         </div>
     </div>
 
+    <!-- Scripts (Tidak dihapus) -->
     <script src="/asset/js/bootstrap.js"></script>
     <script src="/asset/js/app.js"></script>
-    
-<!-- Need: Apexcharts -->
-<script src="/asset/extensions/apexcharts/apexcharts.min.js"></script>
-<script src="/asset/js/pages/dashboard.js"></script>
-    <script src="/asset/js/bootstrap.js"></script>
-    <script src="/asset/js/app.js"></script>
+    <script src="/asset/extensions/apexcharts/apexcharts.min.js"></script>
+    <script src="/asset/js/pages/dashboard.js"></script>
     <script src="/asset/extensions/simple-datatables/umd/simple-datatables.js"></script>
+    <script src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendors/apexcharts/apexcharts.js"></script>
+    <script src="/assets/js/pages/dashboard.js"></script>
+    <script src="/assets/js/main.js"></script>
     <script>
         let table1 = document.querySelector('#table1');
         let dataTable = new simpleDatatables.DataTable(table1);
     </script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const deleteButtons = document.querySelectorAll('.btn-delete');
+    
+            deleteButtons.forEach(button => {
+                button.addEventListener('click', function () {
+                    const userId = this.getAttribute('data-id');
+                    const form = this.closest('form');
+    
+                    Swal.fire({
+                        title: 'Yakin ingin menghapus?',
+                        text: "Data tidak dapat dikembalikan setelah dihapus.",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#d33',
+                        cancelButtonColor: '#3085d6',
+                        confirmButtonText: 'Ya, hapus!'
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            form.submit();
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+    @include('component.footer_admin')
+
 </body>
 
 </html>
