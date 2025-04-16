@@ -51,30 +51,27 @@
 <nav id="navmenu" class="navmenu">
   <ul>
     <li><a href="#hero" class="active">Home</a></li>
-    <li><a href="#about">About</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#portfolio">Portfolio</a></li>
-    <li><a href="#team">Team</a></li>
+    <li><a href="#about">Profile Perusahaan</a></li>
     <li class="dropdown">
-      <a href="#"><span>Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+      <a href="#"><span>Produk</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
       <ul>
-        <li><a href="#">Dropdown 1</a></li>
-        <li class="dropdown">
-          <a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-          <ul>
-            <li><a href="#">Deep Dropdown 1</a></li>
-            <li><a href="#">Deep Dropdown 2</a></li>
-            <li><a href="#">Deep Dropdown 3</a></li>
-            <li><a href="#">Deep Dropdown 4</a></li>
-            <li><a href="#">Deep Dropdown 5</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Dropdown 2</a></li>
-        <li><a href="#">Dropdown 3</a></li>
-        <li><a href="#">Dropdown 4</a></li>
+        <li><a href="#">Produk 1</a></li>
+        <li><a href="#">Produk 2</a></li>
+        <li><a href="#">Produk 3</a></li>
+        <li><a href="#">Produk 4</a></li>
       </ul>
     </li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#portfolio">Artikel</a></li>
+    <li class="dropdown">
+      <a href="#"><span>Gallery Kegiatan</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+      <ul>
+        <li><a href="#">Kegiatan 1</a></li>
+        <li><a href="#">Kegiatan 2</a></li>
+        <li><a href="#">Kegiatan 3</a></li>
+        <li><a href="#">Kegiatan 4</a></li>
+      </ul>
+    </li>
+    <li><a href="#contact">Kontak Kami</a></li>
   </ul>
   <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
 </nav>
@@ -95,232 +92,151 @@
       <p>Mitra Teknologi Konektivitas Anda</p>
       
       <!-- Tombol login -->
-      <a href="{{ route('login') }}" class="btn-get-started">Login</a>
+      <a href="{{ route('login') }}" class="btn-get-started">Login Admin</a>
     </div>
   </div>
 </div>
 </section>
 
 
-    <!-- What We Do Section -->
-    <section id="what-we-do" class="what-we-do section">
+    <!-- Profile Perusahaan Section -->
+<section id="profile-perusahaan" class="profile-perusahaan section">
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>What We Do</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
+<!-- Section Title -->
+<div class="container section-title" data-aos="fade-up">
+  <h2>Profil Perusahaan</h2>
+  <p>Mengenal lebih dekat tentang siapa kami dan apa yang kami lakukan</p>
+</div><!-- End Section Title -->
 
-      <div class="container">
+<div class="container">
+  <div class="row gy-4 align-items-center">
 
-        <div class="row gy-4">
-
-          <div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
-            <div class="why-box">
-              <h3>Why Choose Our Products?</h3>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
-              </p>
-              <div class="text-center">
-                <a href="#" class="more-btn"><span>Learn More</span> <i class="bi bi-chevron-right"></i></a>
-              </div>
-            </div>
-          </div><!-- End Why Box -->
-
-          <div class="col-lg-8 d-flex align-items-stretch">
-            <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
-
-              <div class="col-xl-4">
-                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                  <i class="bi bi-clipboard-data"></i>
-                  <h4>Corporis voluptates officia eiusmod</h4>
-                  <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
-                </div>
-              </div><!-- End Icon Box -->
-
-              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                  <i class="bi bi-gem"></i>
-                  <h4>Ullamco laboris ladore pan</h4>
-                  <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
-                </div>
-              </div><!-- End Icon Box -->
-
-              <div class="col-xl-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="icon-box d-flex flex-column justify-content-center align-items-center">
-                  <i class="bi bi-inboxes"></i>
-                  <h4>Labore consequatur incidid dolore</h4>
-                  <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
-                </div>
-              </div><!-- End Icon Box -->
-
-            </div>
-          </div>
-
-        </div>
-
+    <!-- Kiri: Teks Profil -->
+    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+      <div class="profile-box">
+        <h3 class="mb-3">PT Solusi Koneksi Anda</h3>
+        <p>
+          PT Solusi Koneksi Anda adalah perusahaan yang bergerak di bidang layanan internet dan teknologi informasi. Kami berkomitmen untuk memberikan solusi konektivitas terbaik dan layanan digital berkualitas tinggi kepada pelanggan kami di seluruh Indonesia.
+        </p>
+        <p>
+          Dengan tim profesional dan berpengalaman, kami terus berinovasi untuk memberikan pelayanan yang cepat, aman, dan andal. Visi kami adalah menjadi penyedia solusi teknologi terpercaya yang membantu menghubungkan masa depan Anda.
+        </p>
       </div>
+    </div>
 
-    </section><!-- /What We Do Section -->
+    <!-- Kanan: Gambar / Logo -->
+    <div class="col-lg-6 d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+      <img src="/asset/img/koneksi.png" alt="Logo Perusahaan" class="img-fluid rounded shadow-sm" style="max-height: 350px;">
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="about section">
+  </div>
+</div>
 
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>About Us</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
-      </div><!-- End Section Title -->
+</section>
 
-      <div class="container">
 
-        <div class="row gy-3">
+    <!-- Kenapa Harus Memilih Kami Section -->
+<section id="kenapa-kami" class="about section">
 
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <img src="/asset/img/about.jpg" alt="" class="img-fluid">
-          </div>
+<!-- Section Title -->
+<div class="container section-title" data-aos="fade-up">
+  <h2>Kenapa Harus Memilih Kami?</h2>
+  <p>Kami hadir untuk memberikan solusi terbaik dengan layanan yang unggul dan terpercaya</p>
+</div><!-- End Section Title -->
 
-          <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
-            <div class="about-content ps-0 ps-lg-3">
-              <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-              <p class="fst-italic">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua.
-              </p>
-              <ul>
-                <li>
-                  <i class="bi bi-diagram-3"></i>
-                  <div>
-                    <h4>Ullamco laboris nisi ut aliquip consequat</h4>
-                    <p>Magni facilis facilis repellendus cum excepturi quaerat praesentium libre trade</p>
-                  </div>
-                </li>
-                <li>
-                  <i class="bi bi-fullscreen-exit"></i>
-                  <div>
-                    <h4>Magnam soluta odio exercitationem reprehenderi</h4>
-                    <p>Quo totam dolorum at pariatur aut distinctio dolorum laudantium illo direna pasata redi</p>
-                  </div>
-                </li>
-              </ul>
-              <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                culpa qui officia deserunt mollit anim id est laborum
-              </p>
+<div class="container">
+  <div class="row gy-4 align-items-center">
+
+    <!-- Gambar -->
+    <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+      <img src="/asset/img/bg.jpeg" alt="Kenapa Memilih Kami" class="img-fluid rounded shadow">
+    </div>
+
+    <!-- Konten Keunggulan -->
+    <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+      <div class="about-content ps-0 ps-lg-3">
+        <h3 class="mb-3">Kami Memberikan Lebih Dari Sekedar Layanan</h3>
+        <p class="fst-italic">
+          Dengan pengalaman dan dedikasi tinggi, kami memastikan setiap pelanggan mendapatkan layanan terbaik.
+        </p>
+        <ul>
+          <li>
+            <i class="bi bi-award"></i>
+            <div>
+              <h4>Pelayanan Profesional</h4>
+              <p>Tim kami siap membantu Anda dengan layanan terbaik dan solusi yang cepat dan tepat.</p>
             </div>
-
-          </div>
-        </div>
-
+          </li>
+          <li>
+            <i class="bi bi-people"></i>
+            <div>
+              <h4>Dukungan Pelanggan Responsif</h4>
+              <p>Kami selalu ada untuk Anda, dengan dukungan pelanggan yang responsif dan ramah.</p>
+            </div>
+          </li>
+          <li>
+            <i class="bi bi-rocket"></i>
+            <div>
+              <h4>Inovatif & Terpercaya</h4>
+              <p>Kami terus berinovasi untuk memberikan solusi terbaik dan membangun kepercayaan jangka panjang.</p>
+            </div>
+          </li>
+        </ul>
       </div>
+    </div>
 
-    </section><!-- /About Section -->
+  </div>
+</div>
 
-    <!-- Skills Section -->
-    <section id="skills" class="skills section">
+</section><!-- /Kenapa Harus Memilih Kami Section -->
 
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row skills-content skills-animation">
+<!-- Statistik Kami Section -->
+<section id="stats" class="stats section">
 
-          <div class="col-lg-6">
+<div class="container" data-aos="fade-up" data-aos-delay="100">
 
-            <div class="progress">
-              <span class="skill"><span>HTML</span> <i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
+  <div class="row gy-4">
 
-            <div class="progress">
-              <span class="skill"><span>CSS</span> <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>JavaScript</span> <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-          </div>
-
-          <div class="col-lg-6">
-
-            <div class="progress">
-              <span class="skill"><span>PHP</span> <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>WordPress/CMS</span> <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-            <div class="progress">
-              <span class="skill"><span>Photoshop</span> <i class="val">55%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div><!-- End Skills Item -->
-
-          </div>
-
-        </div>
-
+    <div class="col-lg-3 col-md-6">
+      <div class="stats-item text-center w-100 h-100">
+        <span data-purecounter-start="0" data-purecounter-end="300" data-purecounter-duration="1" class="purecounter"></span>
+        <p>Klien Puas</p>
       </div>
+    </div>
 
-    </section><!-- /Skills Section -->
-
-    <!-- Stats Section -->
-    <section id="stats" class="stats section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Clients</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Projects</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="1453" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Hours Of Support</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item text-center w-100 h-100">
-              <span data-purecounter-start="0" data-purecounter-end="32" data-purecounter-duration="1" class="purecounter"></span>
-              <p>Workers</p>
-            </div>
-          </div><!-- End Stats Item -->
-
-        </div>
-
+    <div class="col-lg-3 col-md-6">
+      <div class="stats-item text-center w-100 h-100">
+        <span data-purecounter-start="0" data-purecounter-end="500" data-purecounter-duration="1" class="purecounter"></span>
+        <p>Proyek Selesai</p>
       </div>
+    </div>
 
-    </section><!-- /Stats Section -->
+    <div class="col-lg-3 col-md-6">
+      <div class="stats-item text-center w-100 h-100">
+        <span data-purecounter-start="0" data-purecounter-end="1000" data-purecounter-duration="1" class="purecounter"></span>
+        <p>Jam Dukungan</p>
+      </div>
+    </div>
+
+    <div class="col-lg-3 col-md-6">
+      <div class="stats-item text-center w-100 h-100">
+        <span data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="1" class="purecounter"></span>
+        <p>Tenaga Ahli</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Tombol Tentang Kami -->
+  <div class="text-center mt-5">
+    <a href="#about" class="btn btn-primary px-4 py-2 rounded-pill">Tentang Kami</a>
+  </div>
+
+</div>
+
+</section><!-- /Statistik Kami Section -->
+
 
     <!-- Services Section -->
     <section id="services" class="services section light-background">
@@ -866,11 +782,10 @@
       <div class="row gy-4">
         <div class="col-lg-5 col-md-12 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">Lumia</span>
+            <span class="sitename">PT. Solusi Koneksi Anda </span>
           </a>
           <p>Cras fermentum odio eu feugiat lide par naso tierra. Justo eget nada terra videa magna derita valies darta donna mare fermentum iaculis eu non diam phasellus.</p>
           <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
             <a href=""><i class="bi bi-facebook"></i></a>
             <a href=""><i class="bi bi-instagram"></i></a>
             <a href=""><i class="bi bi-linkedin"></i></a>
@@ -878,35 +793,29 @@
         </div>
 
         <div class="col-lg-2 col-6 footer-links">
-          <h4>Useful Links</h4>
-          <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
-          </ul>
-        </div>
+  <h4>Alamat</h4>
+  <ul class="list-unstyled">
+    <li>PT Solusi Koneksi Anda</li>
+    <li>Jl. Contoh No.123</li>
+    <li>Kecamatan Kawali, Ciamis</li>
+    <li>Jawa Barat, Indonesia</li>
+    <li>Kode Pos: 46253</li>
+  </ul>
+</div>
 
-        <div class="col-lg-2 col-6 footer-links">
-          <h4>Our Services</h4>
-          <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
-          </ul>
-        </div>
 
-        <div class="col-lg-3 col-md-12 footer-contact text-center text-md-start">
-          <h4>Contact Us</h4>
-          <p>A108 Adam Street</p>
-          <p>New York, NY 535022</p>
-          <p>United States</p>
-          <p class="mt-4"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-          <p><strong>Email:</strong> <span>info@example.com</span></p>
-        </div>
+<div class="col-lg-2 col-6 footer-links">
+  <h4>Support</h4>
+  <ul>
+    <li><a href="#">Bantuan</a></li>
+    <li><a href="#">FAQ</a></li>
+    <li><a href="#">Panduan Pengguna</a></li>
+    <li><a href="#">Kebijakan Layanan</a></li>
+    <li><a href="#">Hubungi Tim Support</a></li>
+  </ul>
+</div>
+
+
 
       </div>
     </div>

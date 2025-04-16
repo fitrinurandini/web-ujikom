@@ -14,10 +14,7 @@
     <link rel="stylesheet" href="/assets/css/bootstrap.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/bootstrap.css">
-
     <link rel="stylesheet" href="/assets/vendors/iconly/bold.css">
-
     <link rel="stylesheet" href="/assets/vendors/perfect-scrollbar/perfect-scrollbar.css">
     <link rel="stylesheet" href="/assets/vendors/bootstrap-icons/bootstrap-icons.css">
     <link rel="stylesheet" href="/assets/css/app.css">
@@ -58,6 +55,9 @@
                                             <th>No</th>
                                             <th>Nama Modul</th>
                                             <th>Deskripsi Modul</th>
+                                            <th>Icon</th>
+                                            <th>Status</th>
+                                            <th>Index Order</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
@@ -67,14 +67,53 @@
                                             <td>{{ $index + 1 }}</td>
                                             <td>{{ $module->nama_module }}</td>
                                             <td>{{ $module->deskripsi_module }}</td>
+                                            <td><img src="{{ asset('storage/module_icons/' . $module->icon) }}" width="40" alt="icon"></td>
+                                            <td>{{ $module->status }}</td>
+                                            <td>{{ $module->index_module }}</td>
                                             <td>
-                                                <a href="{{ route('modules.edit', $module->id) }}" class="btn btn-sm btn-info">✏️</a>
-                                                <form action="{{ route('modules.destroy', $module->id) }}" method="POST" style="display:inline;">
+                                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editModuleModal{{ $module->id }}">✏️</button>
+                                                <form action="{{ route('modules.destroy', $module->id) }}" method="POST" style="display:inline-block;">
                                                     @csrf @method('DELETE')
-                                                    <button class="btn btn-sm btn-danger">🗑️</button>
+                                                    <button class="btn btn-sm btn-danger" onclick="return confirm('Yakin ingin menghapus modul ini?')">🗑️</button>
                                                 </form>
                                             </td>
                                         </tr>
+
+                                        <!-- Modal Edit Module -->
+                                        <div class="modal fade" id="editModuleModal{{ $module->id }}" tabindex="-1" aria-labelledby="editModuleModalLabel{{ $module->id }}" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <form action="{{ route('modules.update', $module->id) }}" method="POST" enctype="multipart/form-data" class="modal-content">
+                                                    @csrf
+                                                    @method('PUT')
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="editModuleModalLabel{{ $module->id }}">Edit Modul</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="form-group mb-3">
+                                                            <label>Icon Modul</label>
+                                                            <input type="file" name="icon" class="form-control">
+                                                        </div>
+                                                        <div class="form-group mb-3">
+                                                            <label>Nama Modul</label>
+                                                            <input type="text" name="nama_module" value="{{ $module->nama_module }}" class="form-control" required>
+                                                        </div>
+                                                        <div class="form-group mb-3">
+                                                            <label>Deskripsi Modul</label>
+                                                            <textarea name="deskripsi_module" class="form-control" rows="3">{{ $module->deskripsi_module }}</textarea>
+                                                        </div>
+                                                        <div class="form-group mb-3">
+                                                            <label>Index Modul</label>
+                                                            <input type="number" name="index_module" value="{{ $module->index_module }}" class="form-control" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-success">Simpan</button>
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
                                         @endforeach
                                     </tbody>
                                 </table>
@@ -90,7 +129,7 @@
                                             </div>
                                             <div class="modal-body">
                                                 <div class="form-group mb-3">
-                                                    <label>Icon Modul (Foto)</label>
+                                                    <label>Icon Modul</label>
                                                     <input type="file" name="icon" class="form-control" required>
                                                 </div>
                                                 <div class="form-group mb-3">
@@ -113,6 +152,7 @@
                                         </form>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </section>
@@ -124,20 +164,15 @@
     <script src="/asset/js/bootstrap.js"></script>
     <script src="/asset/js/app.js"></script>
     <script src="/asset/extensions/simple-datatables/umd/simple-datatables.js"></script>
-    <script src="/assets/js/bootstrap.bundle.min.js"></script>
     <script>
         let table1 = document.querySelector('#table1');
         let dataTable = new simpleDatatables.DataTable(table1);
     </script>
     <script src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
     <script src="/assets/js/bootstrap.bundle.min.js"></script>
-
     <script src="/assets/vendors/apexcharts/apexcharts.js"></script>
     <script src="/assets/js/pages/dashboard.js"></script>
-
     <script src="/assets/js/main.js"></script>
-
-    
 
     @include('component.footer_admin')
 </body>

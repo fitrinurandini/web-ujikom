@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Karyawan - Admin Dashboard</title>
+    <title>Data User - Admin Dashboard</title>
 
     <!-- Styles (Tidak dihapus) -->
     <link rel="stylesheet" href="/asset/css/main/app.css">
@@ -43,13 +43,13 @@
             <main class="flex-grow-1 overflow-auto px-3"> 
             <div class="page-heading">
                 <div class="page-title">
-                    <h3>Data Karyawan</h3>
+                    <h3>Data User</h3>
                 </div>
 
                 <section class="section">
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
-                            <span>Data Karyawan</span>
+                            <span>Data User</span>
                             <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambahUser">Tambah Karyawan</button>
                         </div>
                         <div class="card-body">
@@ -87,7 +87,7 @@
                                     <form action="{{ route('users.store') }}" method="POST" class="modal-content">
                                         @csrf
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Tambah Karyawan</h5>
+                                            <h5 class="modal-title">Tambah User</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                                         </div>
                                         <div class="modal-body">
@@ -116,7 +116,7 @@
                                         @csrf
                                         @method('PUT')
                                         <div class="modal-header">
-                                            <h5 class="modal-title">Edit Karyawan</h5>
+                                            <h5 class="modal-title">Edit User</h5>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Tutup"></button>
                                         </div>
                                         <div class="modal-body">
