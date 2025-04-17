@@ -109,12 +109,18 @@
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label>Tag</label>
-                                                    <select name="tags[]" class="form-control" multiple>
+                                                    <div class="d-flex flex-wrap gap-2">
                                                         @foreach ($tags as $tag)
-                                                        <option value="{{ $tag->id }}">{{ $tag->name }}</option>
+                                                        <div class="form-check">
+                                                            <input class="form-check-input" type="checkbox" name="tags[]" value="{{ $tag->id }}" id="tag{{ $tag->id }}">
+                                                            <label class="form-check-label" for="tag{{ $tag->id }}">
+                                                                {{ $tag->name }}
+                                                            </label>
+                                                        </div>
                                                         @endforeach
-                                                    </select>
+                                                    </div>
                                                 </div>
+                                                
                                                 <div class="form-group mb-3">
                                                     <label>Status</label>
                                                     <select name="status" class="form-control">
@@ -153,12 +159,24 @@
                                                 </div>
                                                 <div class="form-group mb-3">
                                                     <label>Tag</label>
-                                                    <select name="tags[]" class="form-control" multiple>
+                                                    <div class="d-flex flex-wrap gap-2">
                                                         @foreach ($tags as $tag)
-                                                        <option value="{{ $tag->id }}" {{ $article->tags->contains($tag->id) ? 'selected' : '' }}>{{ $tag->name }}</option>
+                                                        <div class="form-check">
+                                                            <input 
+                                                                class="form-check-input" 
+                                                                type="checkbox" 
+                                                                name="tags[]" 
+                                                                value="{{ $tag->id }}" 
+                                                                id="editTag{{ $article->id }}_{{ $tag->id }}"
+                                                                {{ $article->tags->contains($tag->id) ? 'checked' : '' }}>
+                                                            <label class="form-check-label" for="editTag{{ $article->id }}_{{ $tag->id }}">
+                                                                {{ $tag->name }}
+                                                            </label>
+                                                        </div>
                                                         @endforeach
-                                                    </select>
+                                                    </div>
                                                 </div>
+                                                
                                                 <div class="form-group mb-3">
                                                     <label>Status</label>
                                                     <select name="status" class="form-control">

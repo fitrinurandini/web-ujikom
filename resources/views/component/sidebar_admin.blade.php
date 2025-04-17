@@ -54,25 +54,26 @@
             </li>
             
     
-            <li class="sidebar-item has-sub {{ request()->is('article/*') ? 'active' : '' }}">
-        <a href="#" class='sidebar-link'>
-            <i class="bi bi-file-earmark-text"></i>
-            <span>Article</span>
-        </a>
-        <ul class="submenu">
-            <li class="submenu-item {{ request()->is('article/tag') ? 'active' : '' }}">
-                <a href="{{ route('tag.index') }}">Tag</a>
+            <li class="sidebar-item has-sub {{ request()->routeIs('tag.index', 'article.index') ? 'active' : '' }}">
+                <a href="#" class='sidebar-link'>
+                    <i class="bi bi-file-earmark-text"></i>
+                    <span>Article</span>
+                </a>
+                <ul class="submenu" style="{{ request()->routeIs('tag.index', 'article.index') ? 'display: block;' : '' }}">
+                    <li class="submenu-item {{ request()->routeIs('tag.index') ? 'active' : '' }}">
+                        <a href="{{ route('tag.index') }}">Tag</a>
+                    </li>
+                    <li class="submenu-item {{ request()->routeIs('article.index') ? 'active' : '' }}">
+                        <a href="{{ route('article.index') }}">Article</a>
+                    </li>
+                </ul>
             </li>
-            <li class="submenu-item {{ request()->is('article/list') ? 'active' : '' }}">
-                <a href="{{ route('article.index') }}">Article</a>
-            </li>
-        </ul>
-    </li>
+            
     
     
             
     
-            <li class="sidebar-item {{ request()->routeIs('modul.index') ? 'active' : '' }}">
+            <li class="sidebar-item {{ request()->routeIs('modules.index') ? 'active' : '' }}">
                 <a href="{{ route('modules.index') }}" class='sidebar-link'>
                     <i class="bi bi-puzzle"></i>
                     <span>Module</span>
@@ -80,7 +81,7 @@
             </li>
             
     
-            <li class="sidebar-item {{ request()->routeIs('setting.index') ? 'active' : '' }}">
+            <li class="sidebar-item {{ request()->routeIs('index') ? 'active' : '' }}">
                 <a href="{{ route('settings.index') }}" class='sidebar-link'>
                     <i class="bi bi-gear"></i>
                     <span>Setting</span>

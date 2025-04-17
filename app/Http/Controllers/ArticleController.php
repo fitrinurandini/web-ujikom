@@ -22,45 +22,50 @@ class ArticleController extends Controller
     }
 
     public function store(Request $request)
-    {
-        // Validasi input
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'meta_keyword' => 'nullable|string',
-            'meta_description' => 'nullable|string',
-            'status' => 'required|in:active,inactive',
-        ]);
+        {
+            // 1. Validasi input
+            $validated = $request->validate([
+                'title'            => 'required|string|max:255',
+                'content'          => 'required|string',
+                'meta_keywords'    => 'nullable|string|max:255',
+                'meta_description' => 'nullable|string|max:255',
+                'status'           => 'required|boolean',        // ubah in:active,inactive → boolean
+                'tags'             => 'nullable|array',
+                'tags.*'           => 'exists:tags,id',
+            ]);
 
-        // Simpan artikel baru
-        Article::create($validated);
+            // 2. Simpan artikel
+            $article = Article::create($validated);
 
-        return redirect()->route('articles.index')->with('success', 'Artikel berhasil ditambahkan.');
-    }
+            // 3. Sync tags (jika ada)
+            if (!empty($validated['tags'])) {
+                $article->tags()->sync($validated['tags']);
+            }
 
-    public function edit($id)
-    {
-        $article = Article::findOrFail($id);
-        return view('admin.article_edit', compact('article')); // Halaman untuk form edit artikel
-    }
+            return redirect()->route('articles.index')->with('success', 'Artikel berhasil ditambahkan.');
+        }
 
-    public function update(Request $request, $id)
-    {
-        // Validasi input
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'content' => 'required|string',
-            'meta_keyword' => 'nullable|string',
-            'meta_description' => 'nullable|string',
-            'status' => 'required|in:active,inactive',
-        ]);
+        public function update(Request $request, Article $article)
+        {
+            $validated = $request->validate([
+                'title'            => 'required|string|max:255',
+                'content'          => 'required|string',
+                'meta_keywords'    => 'nullable|string|max:255',
+                'meta_description' => 'nullable|string|max:255',
+                'status'           => 'required|boolean',
+                'tags'             => 'nullable|array',
+                'tags.*'           => 'exists:tags,id',
+            ]);
 
-        // Cari artikel dan update
-        $article = Article::findOrFail($id);
-        $article->update($validated);
+            // 1. Update artikel
+            $article->update($validated);
 
-        return redirect()->route('articles.index')->with('success', 'Artikel berhasil diperbarui.');
-    }
+            // 2. Sync ulang tags
+            $article->tags()->sync($validated['tags'] ?? []);
+
+            return redirect()->route('articles.index')->with('success', 'Artikel berhasil diperbarui.');
+        }  
+
 
     public function destroy($id)
     {
@@ -68,5 +73,10 @@ class ArticleController extends Controller
         $article->delete();
 
         return redirect()->route('articles.index')->with('success', 'Artikel berhasil dihapus.');
+    }
+    public function show(Article $article)
+    {
+        // me–load view resources/views/article/show.blade.php
+        return view('article.show', compact('article'));
     }
 }

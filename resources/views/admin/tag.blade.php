@@ -7,9 +7,14 @@
     <title>Data Tag - Admin Dashboard</title>
 
     <!-- Styles (Tidak dihapus) -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/bootstrap.css">
+
+    <link rel="stylesheet" href="/assets/vendors/iconly/bold.css">
+
     <link rel="stylesheet" href="/asset/css/main/app.css">
     <link rel="stylesheet" href="/asset/css/main/app-dark.css">
-    <link rel="shortcut icon" href="/asset/images/logo/favicon.svg" type="image/x-icon">
     <link rel="shortcut icon" href="/asset/images/logo/favicon.png" type="image/png">
     <link rel="stylesheet" href="/asset/css/shared/iconly.css">
     <link rel="stylesheet" href="/asset/extensions/simple-datatables/style.css">
@@ -138,6 +143,13 @@
     </div>
 
     <!-- Scripts (Tidak dihapus) -->
+    <script src="/assets/vendors/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+    <script src="/assets/js/bootstrap.bundle.min.js"></script>
+
+    <script src="/assets/vendors/apexcharts/apexcharts.js"></script>
+    <script src="/assets/js/pages/dashboard.js"></script>
+
+    <script src="/assets/js/main.js"></script>
     <script src="/asset/js/bootstrap.js"></script>
     <script src="/asset/js/app.js"></script>
     <script src="/asset/extensions/simple-datatables/umd/simple-datatables.js"></script>
