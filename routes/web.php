@@ -8,12 +8,17 @@ use App\Http\Controllers\ModuleController;
 use App\Http\Controllers\ArticleController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\SettingController;
+use App\Models\Module;
+use App\Models\Setting;
 
 
 // Tampilkan halaman welcome saat membuka root URL
 Route::get('/', function () {
-    return view('welcome');
+    $modules = Module::where('status', 1)->orderBy('index_module')->get();
+    $setting = Setting::first(); // Ambil setting
+    return view('welcome', compact('modules', 'setting'));
 })->name('welcome');
+
 
 // Routing untuk login, hanya untuk yang belum login (guest)
 Route::middleware(['guest'])->group(function () {

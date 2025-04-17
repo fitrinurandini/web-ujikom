@@ -23,6 +23,10 @@
     <link rel="stylesheet" href="/assets/css/app.css">
     <link rel="shortcut icon" href="/assets/images/favicon.svg" type="image/x-icon">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -66,35 +70,42 @@
                     </div>
 
                     <!-- Profile Modal -->
-                    <div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="profileModalLabel">Profile Setting</h5>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="{{ route('settings.profile.update') }}" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        @method('PUT')
-                                        <div class="mb-3">
-                                            <label for="website_name" class="form-label">Nama Website</label>
-                                            <input type="text" class="form-control" id="website_name" name="website_name" value="{{ old('website_name', $settings->website_name) }}" required>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="website_description" class="form-label">Deskripsi Website</label>
-                                            <textarea class="form-control" id="website_description" name="website_description" required>{{ old('website_description', $settings->website_description) }}</textarea>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="website_logo" class="form-label">Logo Website</label>
-                                            <input type="file" class="form-control" id="website_logo" name="website_logo" accept="image/*">
-                                        </div>
-                                        <button type="submit" class="btn btn-primary">Update Profile</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+<div class="modal fade" id="profileModal" tabindex="-1" aria-labelledby="profileModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="profileModalLabel">Profile Setting</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('settings.profile.update') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    @method('PUT')
+                    <div class="mb-3">
+                        <label for="website_name" class="form-label">Nama Website</label>
+                        <input type="text" class="form-control" id="website_name" name="website_name" value="{{ old('website_name', $settings->website_name) }}" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="website_description" class="form-label">Deskripsi Website</label>
+                        <textarea class="form-control" id="website_description" name="website_description" required>{{ old('website_description', $settings->website_description) }}</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="website_logo" class="form-label">Logo Website</label>
+                        <!-- Menampilkan gambar logo saat ini jika ada -->
+                        @if($settings->website_logo)
+                            <div>
+                                <img src="{{ asset($settings->website_logo) }}" alt="Logo Website" style="max-width: 100px; max-height: 100px;">
+                            </div>
+                        @endif
+                        <input type="file" class="form-control" id="website_logo" name="website_logo" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Update Profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 
                     <!-- Contact Modal -->
                     <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
@@ -124,6 +135,15 @@
                                             <label for="maps" class="form-label">Maps</label>
                                             <input type="text" class="form-control" id="maps" name="maps" value="{{ old('maps', $settings->maps) }}" required>
                                         </div>
+                                        
+                                        <!-- Menampilkan iframe peta jika ada URL -->
+                                        @if ($settings->maps)
+                                            <div class="mt-3">
+                                                <label for="map_preview" class="form-label">Peta Lokasi</label>
+                                                <iframe src="https://www.google.com/maps/embed?pb={{ urlencode($settings->maps) }}" width="100%" height="300" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                                            </div>
+                                        @endif
+                                        
                                         <button type="submit" class="btn btn-primary">Update Kontak</button>
                                     </form>
                                 </div>

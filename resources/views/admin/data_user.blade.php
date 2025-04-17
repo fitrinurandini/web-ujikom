@@ -50,7 +50,7 @@
                     <div class="card">
                         <div class="card-header d-flex justify-content-between align-items-center">
                             <span>Data User</span>
-                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambahUser">Tambah Karyawan</button>
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalTambahUser">Tambah User</button>
                         </div>
                         <div class="card-body">
                             <table class="table table-striped" id="table1">

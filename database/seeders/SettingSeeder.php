@@ -14,11 +14,11 @@ class SettingSeeder extends Seeder
             [
                 'website_name' => 'WiFi Kawali',
                 'website_description' => 'Website resmi WiFi Kawali yang menyediakan layanan internet cepat.',
-                'website_logo' => 'default-logo.png',
+                'website_logo' => 'asset/img/bg.jpeg',
                 'email' => 'info@wifikawali.com',
-                'phone' => '082112345678', // tambahkan ini
-                'address' => 'Jl. Raya Kawali No.123',
-                'maps' => 'https://goo.gl/maps/example',
+                'phone' => '0881022296333', // tambahkan ini
+                'address' => 'JL Talagasari, No. 35, Kawalimukti, Kawali, Kawalimukti, Ciamis, Kabupaten Ciamis, Jawa Barat 46253',
+                'maps' => 'https://maps.app.goo.gl/V88exrFFDHAVmDj48',
                 'facebook' => 'https://facebook.com/wifikawali',
                 'instagram' => 'https://instagram.com/wifikawali',
                 'youtube' => 'https://youtube.com/@wifikawali'
